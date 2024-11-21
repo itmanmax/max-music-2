@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>音乐搜索</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/search/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧播放器 -->
+        <div class="player-section">
+            <div class="player-info">
+                <div class="cover-container">
+                    <img id="songCover" src="/images/default-cover.jpg" alt="封面">
+                </div>
+                <div class="song-info">
+                    <h3 id="songName">未播放</h3>
+                    <p id="artistName">-</p>
+                </div>
+            </div>
+            <div class="audio-player">
+                <audio id="audioPlayer" controls></audio>
+            </div>
+            <div class="player-controls">
+                <button onclick="togglePlay()">播放/暂停</button>
+            </div>
+            
+            <!-- 添加旋转唱片 -->
+            <div class="vinyl-container">
+                <div class="vinyl-disc" id="vinylDisc">
+                    <img src="/images/musiccard.jpg" alt="vinyl">
+                    <div class="vinyl-center"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧搜索区域 -->
+        <div class="search-section">
+            <div class="nav-bar">
+                <h1>音乐搜索</h1>
+                <a href="/home" class="home-button">
+                    <i>🏠</i>
+                    返回首页
+                </a>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="输入歌曲名称...">
+                <button onclick="searchSongs()" class="search-button">搜索</button>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <script src="/search/script.js"></script>
+</body>
+</html> 

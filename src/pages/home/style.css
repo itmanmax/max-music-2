@@ -1,0 +1,192 @@
+:root {
+    --primary-color: #007AFF;
+    --secondary-color: #F5F5F7;
+    --text-primary: #1D1D1F;
+    --text-secondary: #86868B;
+}
+
+.container {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 主要内容区域 */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+}
+
+/* 背景图片设置 */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/back.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.85;
+    filter: brightness(0.9);
+    z-index: -1;
+}
+
+/* 左侧内容区域 */
+.hero-content {
+    width: 50%;
+    padding: 4rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 右侧功能按钮区域 */
+.main-actions {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 2;
+}
+
+.action-btn {
+    width: 220px;
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1.8rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:hover {
+    transform: translateX(-10px);
+    background: var(--primary-color);
+    color: white;
+}
+
+.action-btn .icon {
+    font-size: 1.8rem;
+    margin-right: 1.2rem;
+}
+
+.action-btn span:not(.icon) {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 底部公告区域 */
+.announcement {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.2rem 2rem;
+    z-index: 3;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.announcement h2 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.announcement p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.announcement-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.announcement-link:hover {
+    opacity: 0.8;
+}
+
+.announcement-link p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.announcement-link p:hover {
+    color: var(--primary-color);
+}
+
+/* 添加自定义弹窗样式 */
+.custom-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.95rem;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.custom-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+}
+
+.toast-message {
+    font-weight: 500;
+} 
