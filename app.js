@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const axios = require('axios');
 require('dotenv').config();
 
 const routes = require('./routes');
@@ -17,6 +18,30 @@ app.set('views', path.join(__dirname, 'src/pages'));
 // 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'src/public')));
 app.use(express.static(path.join(__dirname, 'src/pages')));
+
+// 添加音频代理路由
+app.get('/proxy-audio', async (req, res) => {
+    try {
+        const audioUrl = req.query.url;
+        if (!audioUrl) {
+            return res.status(400).send('缺少 URL 参数');
+        }
+
+        const response = await axios({
+            method: 'get',
+            url: audioUrl,
+            responseType: 'stream',
+            timeout: 30000
+        });
+
+        res.setHeader('Content-Type', 'audio/mpeg');
+        res.setHeader('Accept-Ranges', 'bytes');
+        response.data.pipe(res);
+    } catch (error) {
+        console.error('音频代理错误:', error);
+        res.status(500).send('获取音频失败');
+    }
+});
 
 // 使用路由
 app.use('/', routes);

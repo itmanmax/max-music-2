@@ -33,6 +33,12 @@ const musicService = {
                     max: 10
                 }
             });
+            
+            // 修改返回数据中的音频URL
+            if (response.data.code === 0 && response.data.data && response.data.data.src) {
+                response.data.data.src = `/proxy-audio?url=${encodeURIComponent(response.data.data.src)}`;
+            }
+            
             return response.data;
         } catch (error) {
             console.error('获取音乐详情失败:', error);
